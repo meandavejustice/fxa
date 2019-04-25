@@ -30,7 +30,6 @@ exports.token = Joi.string()
   .regex(exports.HEX_STRING);
 
 const scopeString = Joi.string().max(256);
-
 exports.scope = Joi.extend({
   name: 'scope',
   base: Joi.any(), // We're not returning a string, so don't base this on Joi.string().
@@ -68,3 +67,8 @@ exports.jwe = Joi.string()
   .regex(
     /^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]*\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+$/
   );
+
+exports.accessToken = Joi.alternatives().try([
+  exports.token,
+  exports.assertion,
+]);
