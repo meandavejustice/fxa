@@ -4,7 +4,7 @@
 
 'use strict';
 
-const sjcl = require('sjcl');
+import sjcl, { BitArray } from 'sjcl';
 
 /**
  * hkdf - The HMAC-based Key Derivation Function
@@ -14,10 +14,15 @@ const sjcl = require('sjcl');
  * @param {bitArray} ikm Initial keying material
  * @param {bitArray} info Key derivation data
  * @param {bitArray} salt Salt
- * @param {integer} length Length of the derived key in bytes
+ * @param {number} length Length of the derived key in bytes
  * @return promise object- It will resolve with `output` data
  */
-function hkdf(ikm, info, salt, length) {
+export default function hkdf(
+  ikm: BitArray,
+  info: BitArray,
+  salt: BitArray,
+  length: Number
+) {
   var mac = new sjcl.misc.hmac(salt, sjcl.hash.sha256);
   mac.update(ikm);
 
@@ -51,5 +56,3 @@ function hkdf(ikm, info, salt, length) {
 
   return Promise.resolve(truncated);
 }
-
-module.exports = hkdf;

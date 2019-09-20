@@ -12,7 +12,8 @@
     "test-local": "AUTH_SERVER_URL=http://127.0.0.1:9000 npm test",
     "setup": "npm install && grunt sjcl",
     "contributors": "git shortlog -s | cut -c8- | sort -f > CONTRIBUTORS.md",
-    "format": "prettier '**' --write"
+    "format": "prettier '**' --write",
+    "docs": "typedoc --out docs /client"
   },
   "main": "node/index.js",
   "files": [
@@ -33,6 +34,7 @@
     "url": "https://github.com/mozilla/fxa/issues"
   },
   "dependencies": {
+    "@types/sjcl": "1.0.28",
     "es6-promise": "4.1.1",
     "sjcl": "git://github.com/bitwiseshiftleft/sjcl.git#a03ea8e",
     "xhr2": "0.0.7"
@@ -57,6 +59,7 @@
     "otplib": "7.1.0",
     "prettier": "^1.18.2",
     "sinon": "7.3.2",
+    "typedoc": "0.15.0",
     "webpack": "3.10.0"
   }
 }

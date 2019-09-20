@@ -4,7 +4,7 @@
 
 'use strict';
 
-const sjcl = require('sjcl');
+import sjcl, { BitArray } from 'sjcl';
 
 /**
  * @class pbkdf2
@@ -17,7 +17,12 @@ export default {
    * @param  {bitArray} salt The salt string buffer.
    * @return {int} iterations the derived key bit array.
    */
-  derive: function(input, salt, iterations, len) {
+  derive: function(
+    input: BitArray,
+    salt: BitArray,
+    iterations: number,
+    len: number
+  ): Promise<any> {
     var result = sjcl.misc.pbkdf2(input, salt, iterations, len, sjcl.misc.hmac);
     return Promise.resolve(result);
   },

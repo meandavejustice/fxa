@@ -2,7 +2,5 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-module.exports = {
-  INVALID_TIMESTAMP: 111,
-  INCORRECT_EMAIL_CASE: 120,
-};
+export const INVALID_TIMESTAMP = 111;
+export const INCORRECT_EMAIL_CASE = 120;
